@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>-</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<h3 id="backup-application-direct-tcp-socket-via-lan">  <strong>Backup
+Application (Direct TCP Socket via LAN)</strong></h3>
+<h5
+id="this-is-a-backup-restore-application-for-lan-local-network.">This is
+a Backup &amp; Restore application for LAN (Local Network).</h5>
+<h5
+id="it-lets-you-backup-data-from-client-machines-slaves-to-a-central-host-machine-and-later-restore-it-back-all-using-direct-tcp-socket-transfer-with-zip-files.">It
+lets you backup data from client machines (Slaves) to a central Host
+machine, and later restore it back — all using direct TCP socket
+transfer with ZIP files.</h5>
+<h5 id="section"></h5>
+<h5 id="it-also-works-locally-on-the-host-machine-itself">It also works
+locally on the Host machine itself:</h5>
+<h5
+id="you-can-back-up-folders-from-the-host-to-a-local-destination.">You
+can back up folders from the Host to a local destination.</h5>
+<h5
+id="you-can-restore-backups-directly-into-local-folders-without-involving-any-slave.">You
+can restore backups directly into local folders without involving any
+Slave.</h5>
+<p><strong>——————————————————————————————————————————————————————————————-</strong></p>
+<ul>
+<li><h6 id="project-files">  Project Files</h6></li>
+</ul>
+<h6 id="file-what-it-does"><strong>| File | What it does |</strong></h6>
+<h6 id="section-1"><strong>| ——————— |
+————————————————————————————————–|</strong></h6>
+<h6
+id="backend_backup.py-host-backend-engine-scheduling-backup-restore"><strong>|
+<code>Backend\_backup.py</code> | Host backend engine (scheduling,
+backup, restore) |</strong></h6>
+<h6
+id="backup_monitor.py-host-side-graphical-interface-buttons-for-backup-restore-addedit-schedulesapps-to-be-closed"><strong>|
+<code>Backup\_Monitor.py</code> | Host-side graphical interface (buttons
+for Backup, Restore, Add/Edit schedules,apps to be closed)
+|</strong></h6>
+<h6
+id="slave_agent.py-slave-side-service-zips-folders-for-backup-and-unpacks-zips-for-restore"><strong>|
+<code>Slave\_agent.py</code> | Slave-side service, zips folders for
+backup and unpacks zips for restore |</strong></h6>
+<h6
+id="schedule.json-host-config-file-for-sourcedestination-and-scheduled-backups"><strong>|
+<code>schedule.json</code> | Host config file for source/destination and
+scheduled backups |</strong></h6>
+<h6
+id="settings.json-host-config-file-for-apps-to-close-sound-alerts-slave-agent-ipport"><strong>|
+<code>settings.json</code> | Host config file for apps to close, sound
+alerts, slave agent IP/port |</strong></h6>
+<h6
+id="slave_settings.json-slave-config-file-for-its-root-folder-and-port"><strong>|
+<code>slave\_settings.json</code> | Slave config file for its root
+folder and port |</strong></h6>
+<p><strong>——————————————————————————————————————————————————————————————-</strong></p>
+<h6 id="prerequisites"><strong>⚙️ Prerequisites</strong></h6>
+<h6 id="section-2"></h6>
+<p><strong>Python 3.9+ (on both Host and Slave)</strong></p>
+<p><strong>Libraries:</strong></p>
+<p><strong>psutil (for process control on Slave)</strong></p>
+<p><strong>Standard: zipfile, shutil, socket, tkinter</strong></p>
+<p><strong>Extra (for UI): customtkinter, tkcalendar, psutil (for
+process management on Slave)</strong></p>
+<p><strong>——————————————————————————————————————————————————————————————-</strong></p>
+<h6 id="firewall-rule-slave-machine"><strong>Firewall Rule (Slave
+machine)</strong></h6>
+<p><strong>On every Slave computer, you must open the TCP port used by
+the JSON Agent.</strong></p>
+<p><strong>Default port: 7788 (used if no port is written in both
+settings.json of Host and slave_settings.json of Slave).</strong></p>
+<p><strong>Custom port: You can choose any available TCP port (e.g.,
+9000, 10001, etc.) — but the Host and Slave must both use the same
+value.</strong></p>
+<p><strong>On Slave: set json_port in slave_settings.json</strong></p>
+<p><strong>On Host: set slave_agent_port in settings.json</strong></p>
+<h6 id="example-default-7788-cmd-commdand"><strong>Example (default
+7788): CMD Commdand</strong></h6>
+<p><strong>:: Allow JSON Agent (control channel,you can choose any TCP
+port other than 7788)</strong></p>
+<p><strong>netsh advfirewall firewall add rule name=“Slave Agent 7788”
+dir=in action=allow protocol=TCP localport=7788</strong></p>
+<p><strong>:: Verify the rule</strong></p>
+<p><strong>netsh advfirewall firewall show rule name=“Slave Agent
+7788”</strong></p>
+<p><strong>—————————————————————————————————————————————————————————</strong></p>
+<h6 id="ports-networking"><strong>🌐 Ports &amp;
+Networking</strong></h6>
+<p><strong>Control channel (JSON agent):</strong></p>
+<ul>
+<li><strong>Default TCP port 7788.</strong></li>
+<li><strong>This is the important port — open it in the Slave
+firewall.</strong></li>
+</ul>
+<p><strong>Port matching:</strong></p>
+<ul>
+<li><strong>If slave_settings.json (on Slave) and settings.json (on
+Host) specify different JSON ports, connections will fail.</strong></li>
+</ul>
+<p><strong>Both sides must agree on the same port:</strong></p>
+<ul>
+<li><p><strong>Host checks source_path and settings.json →
+slave_agent_port.</strong></p></li>
+<li><p><strong>Slave listens on slave_settings.json →
+json_port.</strong></p></li>
+</ul>
+<p><strong>If they don’t match:</strong></p>
+<ul>
+<li><p><strong>Adjust slave_settings.json → json_port,
+or</strong></p></li>
+<li><p><strong>Adjust settings.json → slave_agent_port,
+or</strong></p></li>
+<li><p><strong>Use the ftp:// source but override Host settings with
+slave_agent_host and slave_agent_port.</strong></p></li>
+</ul>
+<p><strong>IP addresses:</strong></p>
+<ul>
+<li><strong>Run ipconfig on the Slave to see its IP (e.g.,
+192.168.1.45).</strong></li>
+</ul>
+<p><strong>In the Host UI Source field, use:</strong></p>
+<ul>
+<li><p><strong>ftp://192.168.1.45/Backup_Source</strong></p></li>
+<li><p><strong>The ftp:// prefix is just a marker for “remote,” not real
+FTP.</strong></p></li>
+<li><p><strong>The Source input in the Host UI must always contain the
+correct Slave IP in ftp://<SlaveIP>/Sub directory</strong></p></li>
+</ul>
+<p><strong>Host IP:</strong></p>
+<ul>
+<li><p><strong>Usually doesn’t matter for firewall
+rules.</strong></p></li>
+<li><p><strong>Just ensure Host can reach Slave on the LAN (same
+network, or routable subnet).</strong></p></li>
+</ul>
+<p><strong>Ping check:</strong></p>
+<ul>
+<li><p><strong>From Host, run:</strong></p>
+<p><strong>ping 192.168.1.45</strong></p></li>
+<li><p><strong>If ping works → Host can reach Slave’s
+IP.</strong></p></li>
+</ul>
+<p><strong>If ping fails → check:</strong></p>
+<ul>
+<li><strong>Network cable/Wi-Fi</strong></li>
+<li><strong>Firewall blocking ICMP</strong></li>
+<li><strong>Subnet mismatch</strong></li>
+<li><strong>—————————————————————————————————————————————————————————————</strong></li>
+</ul>
+<h6 id="host-computer-control-machine"><strong>🖥 Host Computer (Control
+Machine)</strong></h6>
+<p><strong>Place Backend_backup.py and Backup_Monitor.py together in one
+folder.</strong></p>
+<p><strong>Run Backup_Monitor.py to open the Backup Monitor
+UI.</strong></p>
+<p><strong>Run Backend_backup.py to so that it works in
+background</strong></p>
+<ul>
+<li><h6 id="json-files-configs"><strong>JSON Files
+(Configs)</strong></h6></li>
+<li><strong>###### 📌 Host side</strong></li>
+</ul>
+<ol type="1">
+<li><strong>schedule.json (auto-created by UI if missing)</strong></li>
+<li><strong>Example:</strong></li>
+</ol>
+<p><strong>{</strong></p>
+<p><strong>“source_path”:
+“ftp://192.168.2.200/Backup_Source”,</strong></p>
+<p><strong>“destination_path”: “C:\\Backup Drive”,</strong></p>
+<p><strong>“schedules”: [</strong></p>
+<pre><code>**{ &quot;day&quot;: &quot;2025-09-05&quot;, &quot;time&quot;: &quot;14:00&quot;, &quot;remind\_later\_minutes&quot;: 10 }**</code></pre>
+<p><strong>]</strong></p>
+<p><strong>}</strong></p>
+<p><strong>2. settings.json (auto-created by backend if
+missing)</strong></p>
+<p><strong>Example:</strong></p>
+<p><strong>{</strong></p>
+<p><strong>“apps_to_close_slave”: [“sqlservr.exe”,
+“excel.exe”],</strong></p>
+<p><strong>“slave_agent_host”: “192.168.2.200”,</strong></p>
+<p><strong>“slave_agent_port”: 7788,</strong></p>
+<p><strong>“sound_enabled”: true</strong></p>
+<p><strong>}</strong></p>
+<ul>
+<li><p><strong>apps_to_close_slave: process names (exact names from Task
+Manager → Details tab, e.g., sqlservr.exe).</strong></p></li>
+<li><p><strong>slave_agent_host: Slave IP (optional to write or keep it
+blank).</strong></p></li>
+<li><p><strong>slave_agent_port: JSON Agent port (must match
+Slave).</strong></p></li>
+<li><p><strong>sound_enabled: alert sounds before scheduled
+backups.</strong></p></li>
+</ul>
+<p><strong>Configure in the UI:</strong></p>
+<ul>
+<li><strong>Source:</strong></li>
+</ul>
+<p><strong>Local example: C:\Users\Admin\Documents</strong></p>
+<p><strong>Remote example:
+ftp://192.168.2.200/Backup_Source</strong></p>
+<p><strong>(This IP must be the Slave computer’s IP address from
+ipconfig.)</strong></p>
+<ul>
+<li><p><strong>Destination: pick a folder on Host where backups are
+saved.</strong></p></li>
+<li><p><strong>Add schedules (date/time) for automatic
+backups.</strong></p></li>
+<li><p><strong>Apps to be closed:</strong></p></li>
+</ul>
+<p><strong>In settings.json → apps_to_close_slave, list processes by
+their exact name from Task Manager → Details tab.</strong></p>
+<p><strong>Example: “sqlservr.exe”, “excel.exe”.</strong></p>
+<p><strong>The Slave will close these apps before backup from
+slave</strong></p>
+<ul>
+<li><strong>Trigger Backup Now or Restore manually at any
+time</strong></li>
+<li><strong>—————————————————————————————————————————————————————————————</strong></li>
+</ul>
+<h6 id="slave-computer-client-machine"><strong>💻 Slave Computer (Client
+Machine)</strong></h6>
+<p><strong>Place Slave_agent.py in a folder on the client
+machine.</strong></p>
+<h6 id="json-files-configs-1"><strong>📑 JSON Files
+(Configs)</strong></h6>
+<h6 id="slave-side"><strong>📌 Slave side</strong></h6>
+<ol type="1">
+<li><strong>slave_settings.json (auto-created on first run of Slave
+agent)</strong></li>
+<li><strong>Example:</strong></li>
+</ol>
+<p><strong>{</strong></p>
+<p><strong>“ftp_root”: “C://Backup Source”,</strong></p>
+<p><strong>“json_port”: 7788,</strong></p>
+<p><strong>“auto_create_root”: true</strong></p>
+<p><strong>}</strong></p>
+<ul>
+<li><p><strong>ftp_root: base folder exposed to Host.</strong></p></li>
+<li><p><strong>json_port: port Slave listens on.</strong></p></li>
+<li><p><strong>auto_create_root: if true, creates missing root folder
+automatically.</strong></p></li>
+</ul>
+<p><strong>By default, Slave exposes C:\Backup Source as the root
+folder.</strong></p>
+<p><strong>Edit slave_settings.json if you want a different root folder
+or port.</strong></p>
+<p><strong>Keep Slave_agent.py running — it listens for commands from
+Host.</strong></p>
+<p><strong>—————————————————————————————————————————————————————————————</strong></p>
+<h5 id="how-backup-restore-works"><strong>📦 How Backup &amp; Restore
+Works</strong></h5>
+<h6 id="scheduled-backup"><strong>🔹 Scheduled Backup</strong></h6>
+<ul>
+<li><p><strong>Host checks schedule.json for jobs.</strong></p></li>
+<li><p><strong>At scheduled time, Host asks Slave for
+confirmation.</strong></p></li>
+<li><p><strong>If confirmed, Slave zips the folder and streams it to
+Host.</strong></p></li>
+<li><p><strong>Host saves it as
+Backup_YYYY-MM-DD_HH-MM-SS.zip.</strong></p></li>
+</ul>
+<h6 id="backup-now"><strong>🔹 Backup Now</strong></h6>
+<ul>
+<li><p><strong>Immediate backup request from Host UI.</strong></p></li>
+<li><p><strong>Slave zips and streams to Host.</strong></p></li>
+</ul>
+<h6 id="restore-host-slave"><strong>🔹 Restore (Host →
+Slave)</strong></h6>
+<ul>
+<li><p><strong>Host streams a .zip backup file to
+Slave.</strong></p></li>
+<li><p><strong>Slave unpacks it into the target
+folder.</strong></p></li>
+</ul>
+<h6 id="restore-locally-host-only"><strong>🔹 Restore Locally (Host
+only)</strong></h6>
+<ul>
+<li><strong>Host extracts .zip to a chosen local folder.</strong></li>
+</ul>
+<p><strong>—————————————————————————————————————————————————————————————</strong></p>
+<h6 id="whats-not-needed"><strong>🚫 What’s Not Needed</strong></h6>
+<ul>
+<li><p><strong>FTP logic (_ftp_connect, _create_ftp) → legacy, not used
+anymore.</strong></p></li>
+<li><p><strong>No real FTP server required.</strong></p></li>
+<li><p><strong>Only ftp:// as a marker in paths (UI input) — not an
+actual FTP connection.</strong></p></li>
+</ul>
+<h6 id="section-3"></h6>
+</body>
+</html>
